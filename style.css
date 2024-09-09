@@ -25,3 +25,11 @@ header{
     background-color: white;
     
 }
+.card-img-top{
+    width: 100px;
+}
+.book-img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
