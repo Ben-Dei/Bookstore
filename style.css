@@ -20,3 +20,7 @@ header{
     background-color: teal;
     width: 18rem;
 }
+.line{
+    height: 1px;
+    background-color: white;
+}
