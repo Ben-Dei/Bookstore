@@ -1,0 +1,14 @@
+body{
+    background-color: darkblue;
+    margin: 0px;
+}
+
+
+
+header{
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    color: white;
+    background-color: rgb(18, 18, 56);
+}
