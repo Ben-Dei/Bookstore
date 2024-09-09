@@ -9,6 +9,7 @@ header{
     gap: 24px;
     color: white;
     background-color: rgb(18, 18, 56);
+    
 }
 .book-card{
     display: flex;
