@@ -173,3 +173,20 @@ let books = [
       ]
     }
   ]
+
+  function init() {
+    renderBookTitle();
+  }
+  function renderBookTitle(){
+
+    let contentBookTitleRef = document.getElementById('book-title');
+    contentBookTitleRef.innerHTML = "";
+
+    for (let bookindex = 0; bookindex < books.length; bookindex++){
+      contentBookTitleRef.innerHTML += getBookNameFromBooks(bookindex);
+    }
+  }
+
+  function getBookNameFromBooks(){
+    return `${books[i].name}`
+  }
