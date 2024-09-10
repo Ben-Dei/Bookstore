@@ -193,11 +193,18 @@ function renderBooks() {
                     Price: ${singleBook.price} €<br> erschienen in ${singleBook.publishedYear}<br>Genere:
                     ${singleBook.genre}</div>
       <div class = "line"></div>              
-      <div class = "comments">${singleBook.comments}</div>
+      <div id = "comments${bookindex}" class = "comments"></div>
     </div>  
+    `
+  }
+}
+function renderCommentSection(){
+  let commentContent = document.getElementById('comments');
+  for(let commentindex = 0; commentindex < comment.length; commentindex++){
+    const singleComent = comment[commentindex];
+    commentContent.innerHTML += `
+      <span>${singleComent.name}</span>
     
     `
   }
-
-
 }
