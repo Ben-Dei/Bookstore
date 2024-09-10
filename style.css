@@ -11,6 +11,10 @@ header{
     background-color: rgb(18, 18, 56);
     
 }
+.header-img{
+    width: 100px;
+    height: auto;
+}
 .book-card{
     display: flex;
     justify-content: center;
