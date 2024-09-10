@@ -16,24 +16,18 @@ header{
     height: auto;
 }
 .book-card{
-    display: flex;
-    justify-content: center;
-    color: white;
+    background-color: aqua;
+    width: 200px;
 }
-.card{
-    background-color: teal;
-    width: 18rem;
-}
-.line{
-    height: 2px;
-    background-color: white;
-    
-}
-.card-img-top{
-    width: 100px;
-}
-.book-img{
+.img-container{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.card-book-img{
+    width: 100px;
+}
+.line{
+    height: 2px;
+    background-color: black;
 }

@@ -1,12 +1,12 @@
 let books = [
     {
       "name": "Die Geheimnisse des Ozeans",
-      "author": "Clara Meer",
-      "likes": 1250,
-      "liked": true,
-      "price": 19.99,
-      "publishedYear": 2018,
-      "genre": "Fantasy",
+      "author": "Clara Meer",   //div class informations
+      "likes": 1250,   //div class informations
+      "liked": true,   //div class informations
+      "price": 19.99,   //div class informations
+      "publishedYear": 2018,   //div class informations
+      "genre": "Fantasy",   //div class informations
       "comments": [
         {
           "name": "Leser123",
@@ -174,20 +174,30 @@ let books = [
     }
   ]
 
-  function init() {
-    renderBookTitle();
+function init(){
+  renderBooks();
+}
+
+function renderBooks() {
+  let contentBookRef = document.getElementById('content');
+  contentBookRef.innerHTML = "";
+  for (let bookindex = 0; bookindex < books.length; bookindex++) {
+    const singleBook = books[bookindex];
+    contentBookRef.innerHTML += `
+    <div class = "book-card"> 
+      <div><h5 id = "bookTitle">${singleBook.name}</h5></div>
+      <div class = "line"></div>
+      <div class = "img-container"><img src="./img/book.png" class = "card-book-img"></div>
+      <div class = "line"></div>
+      <div class = "information">Author: ${singleBook.author}<br>Likes: ${singleBook.likes}<br>
+                    Price: ${singleBook.price} €<br> erschienen in ${singleBook.publishedYear}<br>Genere:
+                    ${singleBook.genre}</div>
+      <div class = "line"></div>              
+      <div class = "comments">${singleBook.comments}</div>
+    </div>  
+    
+    `
   }
-  function renderBookTitle(){
 
-    let contentBookTitleRef = document.getElementById('book-title');
-    contentBookTitleRef.innerHTML = "";
 
-    for (let bookindex = 0; bookindex < books.length; bookindex++){
-      contentBookTitleRef.innerHTML += getBookNameFromBooks(bookindex);
-    }
-  }
-
-  function getBookNameFromBooks(){
-
-  
-  }
+}
