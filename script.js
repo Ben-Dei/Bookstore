@@ -189,11 +189,11 @@ function renderBooks() {
       <div class = "line"></div>
       <div class = "img-container"><img src="./img/book.png" class = "card-book-img"></div>
       <div class = "line"></div>
-      <div class = "information">Author: ${singleBook.author}<br>Likes: ${singleBook.likes} <button class="heart-btn" onclick="addLike()">🤍</button><br>
+      <div class = "information">Author: ${singleBook.author}<br>Likes: ${singleBook.likes} <button id="heart-btn" onclick="addLike()">🤍</button><br>
                     Price: ${singleBook.price} €<br> erschienen in ${singleBook.publishedYear}<br>Genere:
                     ${singleBook.genre}</div>
       <div class = "line"></div>              
-      <div id = "comments"></div>
+      <div id = "comments${bookindex}">${singleBook.comments}</div>
       <div><button onclick="addComment()">Kommentieren</button>
     </div>  
     `
@@ -203,11 +203,12 @@ function renderBooks() {
 }
   
 function renderCommentSection(bookindex){
-  let commentContent = document.getElementById('comments');
+  let commentContent = document.getElementsByClassName('comments');
+  commentContent.innerHTML = "";
   for(let commentindex = 0; commentindex < books[bookindex].comments.length; commentindex++){
     const singleComment = books[bookindex];
     commentContent.innerHTML += `
-      <span>Name: ${singleComment.comments.name}<br>Comment: ${books[bookindex].comments.comment}</span>
+      <span>Name: ${singleComment.comments.name}<br>Comment: ${singleComment.comments.comment}</span>
     
     `
   }
