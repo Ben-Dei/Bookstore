@@ -205,9 +205,9 @@ function renderBooks() {
 function renderCommentSection(bookindex){
   let commentContent = document.getElementById('comments');
   for(let commentindex = 0; commentindex < books[bookindex].comments.length; commentindex++){
-    const singleComent = comments[commentindex];
+    const singleComment = books[bookindex];
     commentContent.innerHTML += `
-      <span>Name: ${books[bookindex].comments.name}<br>Comment: ${books[bookindex].comments.comment}</span>
+      <span>Name: ${singleComment.comments.name}<br>Comment: ${books[bookindex].comments.comment}</span>
     
     `
   }
