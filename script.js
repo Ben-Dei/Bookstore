@@ -194,24 +194,28 @@ function renderBooks() {
                     ${singleBook.genre}</div>
       <div class = "line"></div>              
       <div id = "comments"></div>
+      <div><button onclick="addComment()">Kommentieren</button>
     </div>  
     `
-    // renderCommentSection();
+    renderCommentSection(bookindex);
 
   }
 }
   
-function renderCommentSection(){
-  let comments = books.comments
+function renderCommentSection(bookindex){
   let commentContent = document.getElementById('comments');
-  for(let commentindex = 0; commentindex < comments.length; commentindex++){
+  for(let commentindex = 0; commentindex < books[bookindex].comments.length; commentindex++){
     const singleComent = comments[commentindex];
     commentContent.innerHTML += `
-      <span>Name: ${singleComent.name}<br>Comment: ${singleComent.comment}</span>
+      <span>Name: ${books[bookindex].comments.name}<br>Comment: ${books[bookindex].comments.comment}</span>
     
     `
   }
 }
 function addLike(){
+
+}
+
+function addComment(){
 
 }
