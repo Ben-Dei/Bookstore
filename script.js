@@ -189,22 +189,29 @@ function renderBooks() {
       <div class = "line"></div>
       <div class = "img-container"><img src="./img/book.png" class = "card-book-img"></div>
       <div class = "line"></div>
-      <div class = "information">Author: ${singleBook.author}<br>Likes: ${singleBook.likes}<br>
+      <div class = "information">Author: ${singleBook.author}<br>Likes: ${singleBook.likes} <button class="heart-btn" onclick="addLike()">🤍</button><br>
                     Price: ${singleBook.price} €<br> erschienen in ${singleBook.publishedYear}<br>Genere:
                     ${singleBook.genre}</div>
       <div class = "line"></div>              
-      <div id = "comments${bookindex}" class = "comments"></div>
+      <div id = "comments"></div>
     </div>  
     `
+    // renderCommentSection();
+
   }
 }
+  
 function renderCommentSection(){
+  let comments = books.comments
   let commentContent = document.getElementById('comments');
-  for(let commentindex = 0; commentindex < comment.length; commentindex++){
-    const singleComent = comment[commentindex];
+  for(let commentindex = 0; commentindex < comments.length; commentindex++){
+    const singleComent = comments[commentindex];
     commentContent.innerHTML += `
-      <span>${singleComent.name}</span>
+      <span>Name: ${singleComent.name}<br>Comment: ${singleComent.comment}</span>
     
     `
   }
+}
+function addLike(){
+
 }
