@@ -9,6 +9,15 @@ header{
     gap: 24px;
     color: white;
     background-color: rgb(18, 18, 56);
+    @media (max-width: 436px){
+        font-size: 12px;
+    }
+    @media (max-width: 370px){
+        font-size: 10px;
+    }
+    @media (max-width: 333px){
+        font-size: 9px;
+    }
     
 }
 .header-img{
@@ -24,6 +33,10 @@ header{
 .book-card{
     background-color: aqua;
     width: 200px;
+    @media (min-width: 730px){
+        width: 600px;
+
+    }
 }
 .img-container{
     display: flex;
@@ -36,4 +49,7 @@ header{
 .line{
     height: 2px;
     background-color: black;
+}
+.information{
+    text-align: center;
 }

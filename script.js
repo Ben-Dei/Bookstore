@@ -174,22 +174,24 @@ let books = [
     }
   ]
 
+
 function init(){
   renderBooks();
 }
+
 
 function renderBooks() {
   let contentBookRef = document.getElementById('content');
   contentBookRef.innerHTML = "";
   for (let bookindex = 0; bookindex < books.length; bookindex++) {
     const singleBook = books[bookindex];
-    contentBookRef.innerHTML += `
+    contentBookRef.innerHTML += /*html*/`
     <div class = "book-card"> 
       <div><h5 id = "bookTitle">${singleBook.name}</h5></div>
       <div class = "line"></div>
       <div class = "img-container"><img src="./img/book.png" class = "card-book-img"></div>
       <div class = "line"></div>
-      <div class = "information">Author: ${singleBook.author}<br>Likes: ${singleBook.likes} <button id="heart-btn" onclick="addLike()">🤍</button><br>
+      <div class = "information">Author: ${singleBook.author}<br>Likes: <span id="likeSpan${bookindex}">${books[bookindex].likes}</span> <img id ="likesImg${bookindex}" src="./img/regular-heart.svg" onclick="addLike(${bookindex})"><br>
                     Price: ${singleBook.price} €<br> erschienen in ${singleBook.publishedYear}<br>Genere:
                     ${singleBook.genre}</div>
       <div class = "line"></div>              
@@ -198,10 +200,11 @@ function renderBooks() {
     </div>  
     `
     renderCommentSection(bookindex);
-
+    checkUpLikedBook(bookindex);
   }
 }
-  
+
+
 function renderCommentSection(bookindex){
   let commentContent = document.getElementById('comments' + bookindex);
   commentContent.innerHTML = ""
@@ -215,9 +218,29 @@ function renderCommentSection(bookindex){
   }
 }
 
-function addLike(){
-
+function checkUpLikedBook(bookindex){
+    let likedImg = document.getElementById(`likesImg${bookindex}`);
+    if (books[bookindex].liked == true){
+      likedImg.src="./img/solid-heart.svg";
+    }
 }
+
+
+function addLike(bookindex){
+    let likedImg = document.getElementById(`likesImg${bookindex}`); 
+    let likeSpan = document.getElementById(`likeSpan${bookindex}`);
+
+      if (books[bookindex].liked == true) {
+        likedImg.src="./img/regular-heart.svg";
+        books[bookindex].liked = false
+        likeSpan.innerText = `${(books[bookindex].likes -= 1)}`
+      } else if (books[bookindex].liked == false) {
+        likedImg.src="./img/solid-heart.svg";
+        books[bookindex].liked = true
+         likeSpan.innerText = `${(books[bookindex].likes += 1)}`
+      }
+}
+
 
 function addComment(){
 
