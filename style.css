@@ -53,3 +53,12 @@ header{
 .information{
     text-align: center;
 }
+.input-and-send{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+}
+.inputfield{
+    width: 150px;
+}

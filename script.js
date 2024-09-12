@@ -195,8 +195,19 @@ function renderBooks() {
                     Price: ${singleBook.price} €<br> erschienen in ${singleBook.publishedYear}<br>Genere:
                     ${singleBook.genre}</div>
       <div class = "line"></div>              
-      <div id ="comments${bookindex}"></div>
-      <div><button onclick="addComment()">Kommentieren</button>
+      <div class = "comment-section">
+        <div id = "content-comment${bookindex}">
+          <div></div>
+          <div id="comment-msg${bookindex}">
+            <span id ="userName${bookindex}"></span>
+            <span id ="userMsg${bookindex}"></span>
+          </div>
+        </div>
+        <div class ="input-and-send">
+          <div><input class="inputfield"></div>
+          <div><img src = "./img/solid-send.svg"></div>
+        </div>
+      </div>
     </div>  
     `
     renderCommentSection(bookindex);
@@ -206,7 +217,7 @@ function renderBooks() {
 
 
 function renderCommentSection(bookindex){
-  let commentContent = document.getElementById('comments' + bookindex);
+  let commentContent = document.getElementById(`comment-msg${bookindex}`);
   commentContent.innerHTML = ""
   for(let commentindex = 0; commentindex < books[bookindex].comments.length; commentindex++){
         const singleComment = books[bookindex];
@@ -242,6 +253,6 @@ function addLike(bookindex){
 }
 
 
-function addComment(){
+function addComment(bookindex){
 
 }
