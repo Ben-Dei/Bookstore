@@ -53,12 +53,23 @@ header{
 .information{
     text-align: center;
 }
+.heart-img{
+    width: 16px;
+}
 .input-and-send{
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 18px;
+    @media (min-width: 730px){
+        justify-content: space-evenly;
+
+    }
 }
-.inputfield{
+.inpf{
     width: 150px;
+    @media (min-width: 730px){
+        width: 500px;
+    }
+
 }

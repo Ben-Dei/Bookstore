@@ -177,6 +177,7 @@ let books = [
 
 function init(){
   renderBooks();
+  
 }
 
 
@@ -191,21 +192,18 @@ function renderBooks() {
       <div class = "line"></div>
       <div class = "img-container"><img src="./img/book.png" class = "card-book-img"></div>
       <div class = "line"></div>
-      <div class = "information">Author: ${singleBook.author}<br>Likes: <span id="likeSpan${bookindex}">${books[bookindex].likes}</span> <img id ="likesImg${bookindex}" src="./img/regular-heart.svg" onclick="addLike(${bookindex})"><br>
+      <div class = "information">Author: ${singleBook.author}<br>Likes: <span id="likeSpan${bookindex}">${books[bookindex].likes}</span> <img id ="likesImg${bookindex}" src="./img/regular-heart.svg" class ="heart-img" onclick="addLike(${bookindex})"><br>
                     Price: ${singleBook.price} €<br> erschienen in ${singleBook.publishedYear}<br>Genere:
                     ${singleBook.genre}</div>
       <div class = "line"></div>              
       <div class = "comment-section">
-        <div id = "content-comment${bookindex}">
-          <div></div>
+        <div id = "content_comment${bookindex}">
           <div id="comment-msg${bookindex}">
-            <span id ="userName${bookindex}"></span>
-            <span id ="userMsg${bookindex}"></span>
-          </div>
+          </div>    
         </div>
         <div class ="input-and-send">
-          <div><input class="inputfield"></div>
-          <div><img src = "./img/solid-send.svg"></div>
+          <div class ="inpf"><input id="inputfield${bookindex}"></div>
+          <div><img src = "./img/solid-send.svg" onclick ="addToCommentSection(${bookindex})"></div>
         </div>
       </div>
     </div>  
@@ -217,7 +215,7 @@ function renderBooks() {
 
 
 function renderCommentSection(bookindex){
-  let commentContent = document.getElementById(`comment-msg${bookindex}`);
+  let commentContent = document.getElementById(`content_comment${bookindex}`);
   commentContent.innerHTML = ""
   for(let commentindex = 0; commentindex < books[bookindex].comments.length; commentindex++){
         const singleComment = books[bookindex];
@@ -253,6 +251,18 @@ function addLike(bookindex){
 }
 
 
-function addComment(bookindex){
+function addToCommentSection(bookindex){
+    let owncomments = books[bookindex]
+    let owmcomment = owncomments.comments;
+    let addNoteRef = document.getElementById(`inputfield${bookindex}`);
+    let myComment = addNoteRef.value;
+        if(myComment != "") {
+          
+        owmcomment.push(myComment);
+        addNoteRef.value = "";
+        renderCommentSection(bookindex)
+        } else{
+          alert("Bitte Kommentarfeld ausfüllen");
+        }
 
-}
+}       
