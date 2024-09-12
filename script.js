@@ -193,7 +193,7 @@ function renderBooks() {
                     Price: ${singleBook.price} €<br> erschienen in ${singleBook.publishedYear}<br>Genere:
                     ${singleBook.genre}</div>
       <div class = "line"></div>              
-      <div id = "comments${bookindex}">${singleBook.comments}</div>
+      <div id ="comments${bookindex}"></div>
       <div><button onclick="addComment()">Kommentieren</button>
     </div>  
     `
@@ -203,16 +203,18 @@ function renderBooks() {
 }
   
 function renderCommentSection(bookindex){
-  let commentContent = document.getElementsByClassName('comments');
-  commentContent.innerHTML = "";
+  let commentContent = document.getElementById('comments' + bookindex);
+  commentContent.innerHTML = ""
   for(let commentindex = 0; commentindex < books[bookindex].comments.length; commentindex++){
-    const singleComment = books[bookindex];
-    commentContent.innerHTML += `
-      <span>Name: ${singleComment.comments.name}<br>Comment: ${singleComment.comments.comment}</span>
+        const singleComment = books[bookindex];
+        commentContent.innerHTML += `
+              <span>Name: ${singleComment.comments[commentindex].name}<br></span>
+              <span>Comment: ${singleComment.comments[commentindex].comment}<br></span>
     
-    `
+                `
   }
 }
+
 function addLike(){
 
 }
