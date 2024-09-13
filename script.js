@@ -186,28 +186,7 @@ function renderBooks() {
   contentBookRef.innerHTML = "";
   for (let bookindex = 0; bookindex < books.length; bookindex++) {
     const singleBook = books[bookindex];
-    contentBookRef.innerHTML += /*html*/`
-    <div class = "book-card"> 
-      <div><h5 id = "bookTitle">${singleBook.name}</h5></div>
-      <div class = "line"></div>
-      <div class = "img-container"><img src="./img/book.png" class = "card-book-img"></div>
-      <div class = "line"></div>
-      <div class = "information">Author: ${singleBook.author}<br>Likes: <span id="likeSpan${bookindex}">${books[bookindex].likes}</span> <img id ="likesImg${bookindex}" src="./img/regular-heart.svg" class ="heart-img" onclick="addLike(${bookindex})"><br>
-                    Price: ${singleBook.price} €<br> erschienen in ${singleBook.publishedYear}<br>Genere:
-                    ${singleBook.genre}</div>
-      <div class = "line"></div>              
-      <div class = "comment-section">
-        <div id = "content_comment${bookindex}">
-          <div id="comment-msg${bookindex}">
-          </div>    
-        </div>
-        <div class ="input-and-send">
-          <div class ="inpf"><input id="inputfield${bookindex}"></div>
-          <div><img src = "./img/solid-send.svg" onclick ="addToCommentSection(${bookindex})"></div>
-        </div>
-      </div>
-    </div>  
-    `
+    contentBookRef.innerHTML += renderBooksTemplate(singleBook, bookindex);
     renderCommentSection(bookindex);
     checkUpLikedBook(bookindex);
   }
@@ -218,11 +197,10 @@ function renderCommentSection(bookindex){
   let commentContent = document.getElementById(`content_comment${bookindex}`);
   commentContent.innerHTML = ""
   for(let commentindex = 0; commentindex < books[bookindex].comments.length; commentindex++){
-        const singleComment = books[bookindex];
-        commentContent.innerHTML += `
-              <span>Name: ${singleComment.comments[commentindex].name}<br></span>
-              <span>Comment: ${singleComment.comments[commentindex].comment}<br></span>
-    
+        const singleComment = books[bookindex].comments[commentindex];
+        commentContent.innerHTML +=  /*html*/`
+              <span>Name: ${singleComment.name}<br></span>
+              <span>Comment: ${singleComment.comment}<br></span>
                 `
   }
 }
@@ -239,11 +217,11 @@ function addLike(bookindex){
     let likedImg = document.getElementById(`likesImg${bookindex}`); 
     let likeSpan = document.getElementById(`likeSpan${bookindex}`);
 
-      if (books[bookindex].liked == true) {
+      if (books[bookindex].liked) {
         likedImg.src="./img/regular-heart.svg";
         books[bookindex].liked = false
         likeSpan.innerText = `${(books[bookindex].likes -= 1)}`
-      } else if (books[bookindex].liked == false) {
+      } else {
         likedImg.src="./img/solid-heart.svg";
         books[bookindex].liked = true
          likeSpan.innerText = `${(books[bookindex].likes += 1)}`
@@ -252,9 +230,8 @@ function addLike(bookindex){
 
 
 function addToCommentSection(bookindex){
-    let owncomments = books[bookindex]
-    let owmcomment = owncomments.comments;
     let addNoteRef = document.getElementById(`inputfield${bookindex}`);
+    let owmcomment = books[bookindex].comments;
     let myComment = addNoteRef.value;
         if(myComment != "") {
           

@@ -35,7 +35,18 @@ header{
     width: 200px;
     @media (min-width: 730px){
         width: 600px;
-
+    }
+    @media (min-width: 630px){
+        width: 600px;
+    }
+    @media (max-width: 630px){
+        width: 500px;
+    }
+    @media (max-width: 516px){
+        width: 350px;
+    }
+    @media (max-width: 364px){
+        width: 250px;
     }
 }
 .img-container{
@@ -55,16 +66,14 @@ header{
 }
 .heart-img{
     width: 16px;
+    cursor: pointer;
 }
 .input-and-send{
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 18px;
-    @media (min-width: 730px){
-        justify-content: space-evenly;
-
-    }
+    justify-content: space-evenly;
 }
 .inpf{
     width: 150px;
@@ -72,4 +81,7 @@ header{
         width: 500px;
     }
 
+}
+.pointer-img{
+    cursor: pointer;
 }
